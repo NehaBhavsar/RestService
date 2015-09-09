@@ -3,6 +3,14 @@ package com.myapp.model;
 import com.myapp.Customer;
 import com.myapp.RespCode;
 
+/**
+ * @author neha
+ * 
+ * Created on 09/08/2015
+ * 
+ * Customer response
+ *
+ */
 public class CustomerResp {
 
 	private Customer customer;

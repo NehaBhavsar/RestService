@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.myapp.Customer;
 import com.myapp.RespCode;
+import com.myapp.exception.CustomerNotFoundException;
 import com.myapp.model.CustomerResp;
 
 @Controller
@@ -26,14 +27,19 @@ public class CustomerController {
 
 	}
 
+	/**
+	 * @param custId
+	 * @return
+	 */
 	@RequestMapping(value = "/{custId}", method = RequestMethod.GET)
 	@ResponseBody
 	public CustomerResp getcustomerById(@PathVariable("custId") int custId) {
 		for (Customer customer : lstCust) {
-			if (customer.getCustId() == custId)
+			if (customer.getCustId() == custId){
 				return new CustomerResp(customer, RespCode.SUCCESS, "Customer found with id  : " + custId);
+			}
 		}
-		return new CustomerResp(RespCode.FAILURE, "Customer not Found");
+		throw new CustomerNotFoundException();
 	}
 
 	@RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -57,13 +63,15 @@ public class CustomerController {
 	@RequestMapping(value = "/{custId}", method = RequestMethod.DELETE)
 	@ResponseBody
 	public CustomerResp deleteCustomer(@PathVariable("custId") int custId) {
-		for (Customer customer : lstCust) {
+		Customer cust = null;
+		for (Customer customer : lstCust) {			
 			if (customer.getCustId() == custId) {
-				lstCust.remove(customer);
+				cust = customer;
+				lstCust.remove(cust);
 				return new CustomerResp(RespCode.SUCCESS, "Customer deleted with id  : " + custId);
 			} 
 		}
-		return new CustomerResp(RespCode.FAILURE, "Customer not Found");
+		throw new CustomerNotFoundException();
 	}
 
 }
