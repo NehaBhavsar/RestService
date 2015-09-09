@@ -12,3 +12,6 @@ git push -u origin master
 
 git remote add origin https://github.com/NehaBhavsar/OCPJava.git
 git push -u origin master
+
+git checkout -b b1 master ( git checkout -b <newbranch> <oldbranch>
+git push -u origin b1
