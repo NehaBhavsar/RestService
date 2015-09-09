@@ -1,4 +1,4 @@
-package com.np.spring.boot.RestService;
+package com.myapp;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
