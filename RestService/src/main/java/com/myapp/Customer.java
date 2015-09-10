@@ -13,6 +13,9 @@ public class Customer {
 	private String lName;
 	private long contactNo;
 
+	/**
+	 * Default constructor.
+	 */
 	public Customer() {
 
 	}
