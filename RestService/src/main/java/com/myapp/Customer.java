@@ -1,5 +1,11 @@
 package com.myapp;
 
+/**
+ * @author neha
+ * 
+ * created on 09/08/2015
+ *
+ */
 public class Customer {
 
 	private int custId;
